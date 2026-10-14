@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Space+Grotesk:wght@400;500;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <title>Assignment 1</title>
+</head>
+
+<body>
+  <div class="min-h-screen bg-[#07090e] text-slate-200 selection:bg-cyan-500/20 selection:text-cyan-200">
+    <div class="max-w-6xl mx-auto px-4 py-16 space-y-11">
+
+
+      <header class="flex flex-col md:flex-row md:items-end justify-between border-b border-slate-800 pb-6">
+        <div>
+          <span class="text-xs font-mono text-cyan-500 uppercase font-bold">// agincourt
+            edition</span>
+          <h1 class="text-3xl font-bold text-white">Cubic Equation Solver</h1>
+        </div>
+        <p class="text-xs font-mono text-slate-500 md:text-right">Real-time cubic equation analysis tool</p>
+      </header>
+
+      <main class="space-y-11">
+
+        <section class="bg-[#0b0f19] border border-slate-800 rounded-xl p-5 relative overflow-hidden">
+          <div class="absolute top-0 left-0 w-1 h-full bg-cyan-500"></div>
+          <form id="form" class="flex flex-wrap items-center justify-between gap-6">
+            <div class="flex flex-wrap gap-4 sm:gap-6 flex-1 justify-start">
+              <label class="group flex flex-col gap-1.5">
+                <span class="text-xs font-mono text-slate-500">a-value
+                  [x³]</span>
+                <input name="a" type="number" value="0"
+                  class="w-24 px-3 py-2 rounded-md bg-[#121824] border border-slate-800 text-white font-mono focus:outline-none focus:border-cyan-500 text-center">
+              </label>
+              <label class="group flex flex-col gap-1.5">
+                <span class="text-xs font-mono text-slate-500 group-focus-within:text-cyan-400">b-value
+                  [x²]</span>
+                <input name="a" type="number" value="0"
+                  class="w-24 px-3 py-2 rounded-md bg-[#121824] border border-slate-800 text-white font-mono focus:outline-none focus:border-cyan-500 text-center">
+              </label>
+              <label class="group flex flex-col gap-1.5">
+                <span class="text-xs font-mono text-slate-500 group-focus-within:text-cyan-400">c-value
+                  [x]</span>
+                <input name="a" type="number" value="0"
+                  class="w-24 px-3 py-2 rounded-md bg-[#121824] border border-slate-800 text-white font-mono focus:outline-none focus:border-cyan-500 text-center">
+              </label>
+              <label class="group flex flex-col gap-1.5">
+                <span class="text-xs font-mono text-slate-500 group-focus-within:text-cyan-400">d-value
+                  [c]</span>
+                <input name="a" type="number" value="0"
+                  class="w-24 px-3 py-2 rounded-md bg-[#121824] border border-slate-800 text-white font-mono focus:outline-none focus:border-cyan-500 text-center">
+              </label>
+            </div>
+            <input type="submit" value="SAVE"
+              class="px-6 py-3 rounded-md bg-cyan-500 hover:bg-cyan-400 text-[#07090e] font-mono text-xs font-bold duration-150 active:scale-95 cursor-pointer shadow-lg shadow-cyan-500/10 self-end sm:self-auto w-full sm:w-auto text-center">
+          </form>
+        </section>
+
+        <div class="grid grid-cols-2 gap-12">
+          <section class="space-y-6 flex flex-col">
+            <div class="text-xs font-mono text-slate-500 uppercase font-bold">01 // analysis</div>
+            <div class="space-y-1 font-mono text-xs">
+              <div
+                class="flex justify-between items-center py-3 border-b border-slate-900 px-1 hover:bg-slate-900/30">
+                <span class="text-slate-500">[p] parameter</span>
+                <span id="p" class="text-slate-200 font-medium">0.000</span>
+              </div>
+              <div
+                class="flex justify-between items-center py-3 border-b border-slate-900 px-1 hover:bg-slate-900/30">
+                <span class="text-slate-500">[q] parameter</span>
+                <span id="p" class="text-slate-200 font-medium">0.000</span>
+              </div>
+              <div
+                class="flex justify-between items-center py-3 border-b border-slate-900 px-1 hover:bg-slate-900/30">
+                <span class="text-slate-500">[Δ] discriminant</span>
+                <span id="p" class="text-yellow-400 font-medium">0.000</span>
+              </div>
+              <div
+                class="flex justify-between items-center py-3 border-b border-slate-900 px-1 hover:bg-slate-900/30">
+                <span class="text-slate-500">[r1] root alpha</span>
+                <span id="p" class="text-emerald-400 font-medium">x: N/A | y: N/A</span>
+              </div>
+              <div
+                class="flex justify-between items-center py-3 border-b border-slate-900 px-1 hover:bg-slate-900/30">
+                <span class="text-slate-500">[r2] root beta</span>
+                <span id="p" class="text-emerald-400 font-medium">x: N/A | y: N/A</span>
+              </div>
+              <div
+                class="flex justify-between items-center py-3 border-b border-slate-900 px-1 hover:bg-slate-900/30">
+                <span class="text-slate-500">[r3] root gamma</span>
+                <span id="p" class="text-emerald-400 font-medium">x: N/A | y: N/A</span>
+              </div>
+              <div
+                class="flex justify-between items-center py-3 border-b border-slate-900 px-1 hover:bg-slate-900/30">
+                <span class="text-slate-500">[min] critical point</span>
+                <span id="p" class="text-cyan-400 font-medium">x: N/A | y: N/A</span>
+              </div>
+              <div
+                class="flex justify-between items-center py-3 border-b border-slate-900 px-1 hover:bg-slate-900/30">
+                <span class="text-slate-500">[max] critical point</span>
+                <span id="p" class="text-purple-400 font-medium">x: N/A | y: N/A</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="space-y-6 flex flex-col">
+            <div class="text-xs font-mono text-slate-500 uppercase font-bold">02 // summary</div>
+            <div class="space-y-1 font-mono text-xs">
+              <div class="p-4 bg-[#0b0f19]/40 border border-slate-900 rounded-lg flex flex-col gap-1">
+                <div class="text-slate-500 text-[10px] uppercase">f(x) expanded polynomial</div>
+                <div id="equation" class="text-slate-200 text-sm break-all">N/A</div>
+              </div>
+              <div class="p-4 bg-[#0b0f19]/40 border border-slate-900 rounded-lg flex flex-col gap-1">
+                <div class="text-slate-500 text-[10px] uppercase">f(x) expanded polynomial</div>
+                <div id="equation" class="text-slate-200 text-sm break-all">N/A</div>
+              </div>
+              <div class="p-4 bg-[#0b0f19]/40 border border-slate-900 rounded-lg flex flex-col gap-1">
+                <div class="text-slate-500 text-[10px] uppercase ">f(x) expanded polynomial</div>
+                <div id="equation" class="text-slate-200 text-sm break-all">N/A</div>
+              </div>
+              <div class="p-4 bg-[#0b0f19]/40 border border-slate-900 rounded-lg flex flex-col gap-1">
+                <div class="text-slate-500 text-[10px] uppercase ">f(x) expanded polynomial</div>
+                <div id="equation" class="text-slate-200 text-sm break-all">N/A</div>
+              </div>
+              <div class="p-4 bg-[#0b0f19]/40 border border-slate-900 rounded-lg flex flex-col gap-1">
+                <div class="text-slate-500 text-[10px] uppercase">f(x) expanded polynomial</div>
+                <div id="equation" class="text-slate-200 text-sm break-all">N/A</div>
+              </div>
+            </div>
+          </section>
+
+          <section class="space-y-7 flex flex-col max-h-140">
+            <div class="text-xs font-mono text-slate-500 uppercase font-bold">03 // history</div>
+            <div id="history"
+              class="flex flex-col font-mono text-xs text-slate-400 space-y-2 overflow-y-auto custom-scrollbar flex-1 pr-2">
+              <div class="flex items-center gap-2">
+                <button
+                  class="flex-1 text-left p-3 rounded-xl bg-slate-800/40 border border-slate-700 hover:bg-slate-800/70">
+                  <div class="grid grid-cols-4 font-mono text-slate-200 text-sm">
+
+                    <span class="text-center">1</span>
+                    <span class="text-center">2</span>
+                    <span class="text-center">3</span>
+                    <span class="text-center">4</span>
+                  </div>
+                </button>
+                <button
+                  class="px-3 py-2 text-xs font-medium rounded-lg border border-red-500/30 text-red-400 bg-red-500/10 hover:bg-red-500/20 hover:text-red-300">Delete</button>
+              </div>
+              <div class="flex items-center gap-2">
+                <button
+                  class="flex-1 text-left p-3 rounded-xl bg-slate-800/40 border border-slate-700 hover:bg-slate-800/70">
+                  <div class="grid grid-cols-4 font-mono text-slate-200 text-sm">
+
+                    <span class="text-center">1</span>
+                    <span class="text-center">2</span>
+                    <span class="text-center">3</span>
+                    <span class="text-center">4</span>
+                  </div>
+                </button>
+                <button
+                  class="px-3 py-2 text-xs font-medium rounded-lg border border-red-500/30 text-red-400 bg-red-500/10 hover:bg-red-500/20 hover:text-red-300">Delete</button>
+              </div>
+              <div class="flex items-center gap-2">
+                <button
+                  class="flex-1 text-left p-3 rounded-xl bg-slate-800/40 border border-slate-700 hover:bg-slate-800/70">
+                  <div class="grid grid-cols-4 font-mono text-slate-200 text-sm">
+
+                    <span class="text-center">1</span>
+                    <span class="text-center">2</span>
+                    <span class="text-center">3</span>
+                    <span class="text-center">4</span>
+                  </div>
+                </button>
+                <button
+                  class="px-3 py-2 text-xs font-medium rounded-lg border border-red-500/30 text-red-400 bg-red-500/10 hover:bg-red-500/20 hover:text-red-300">Delete</button>
+              </div>
+              <div class="flex items-center gap-2">
+                <button
+                  class="flex-1 text-left p-3 rounded-xl bg-slate-800/40 border border-slate-700 hover:bg-slate-800/70">
+                  <div class="grid grid-cols-4 font-mono text-slate-200 text-sm">
+
+                    <span class="text-center">1</span>
+                    <span class="text-center">2</span>
+                    <span class="text-center">3</span>
+                    <span class="text-center">4</span>
+                  </div>
+                </button>
+                <button
+                  class="px-3 py-2 text-xs font-medium rounded-lg border border-red-500/30 text-red-400 bg-red-500/10 hover:bg-red-500/20 hover:text-red-300">Delete</button>
+              </div>
+              <div class="flex items-center gap-2">
+                <button
+                  class="flex-1 text-left p-3 rounded-xl bg-slate-800/40 border border-slate-700 hover:bg-slate-800/70">
+                  <div class="grid grid-cols-4 font-mono text-slate-200 text-sm">
+
+                    <span class="text-center">1</span>
+                    <span class="text-center">2</span>
+                    <span class="text-center">3</span>
+                    <span class="text-center">4</span>
+                  </div>
+                </button>
+                <button
+                  class="px-3 py-2 text-xs font-medium rounded-lg border border-red-500/30 text-red-400 bg-red-500/10 hover:bg-red-500/20 hover:text-red-300">Delete</button>
+              </div>
+              <div class="flex items-center gap-2">
+                <button
+                  class="flex-1 text-left p-3 rounded-xl bg-slate-800/40 border border-slate-700 hover:bg-slate-800/70">
+                  <div class="grid grid-cols-4 font-mono text-slate-200 text-sm">
+
+                    <span class="text-center">1</span>
+                    <span class="text-center">2</span>
+                    <span class="text-center">3</span>
+                    <span class="text-center">4</span>
+                  </div>
+                </button>
+                <button
+                  class="px-3 py-2 text-xs font-medium rounded-lg border border-red-500/30 text-red-400 bg-red-500/10 hover:bg-red-500/20 hover:text-red-300">Delete</button>
+              </div>
+              <div class="flex items-center gap-2">
+                <button
+                  class="flex-1 text-left p-3 rounded-xl bg-slate-800/40 border border-slate-700 hover:bg-slate-800/70">
+                  <div class="grid grid-cols-4 font-mono text-slate-200 text-sm">
+
+                    <span class="text-center">1</span>
+                    <span class="text-center">2</span>
+                    <span class="text-center">3</span>
+                    <span class="text-center">4</span>
+                  </div>
+                </button>
+                <button
+                  class="px-3 py-2 text-xs font-medium rounded-lg border border-red-500/30 text-red-400 bg-red-500/10 hover:bg-red-500/20 hover:text-red-300">Delete</button>
+              </div>
+              <div class="flex items-center gap-2">
+                <button
+                  class="flex-1 text-left p-3 rounded-xl bg-slate-800/40 border border-slate-700 hover:bg-slate-800/70">
+                  <div class="grid grid-cols-4 font-mono text-slate-200 text-sm">
+
+                    <span class="text-center">1</span>
+                    <span class="text-center">2</span>
+                    <span class="text-center">3</span>
+                    <span class="text-center">4</span>
+                  </div>
+                </button>
+                <button
+                  class="px-3 py-2 text-xs font-medium rounded-lg border border-red-500/30 text-red-400 bg-red-500/10 hover:bg-red-500/20 hover:text-red-300">Delete</button>
+              </div>
+              <div class="flex items-center gap-2">
+                <button
+                  class="flex-1 text-left p-3 rounded-xl bg-slate-800/40 border border-slate-700 hover:bg-slate-800/70">
+                  <div class="grid grid-cols-4 font-mono text-slate-200 text-sm">
+
+                    <span class="text-center">1</span>
+                    <span class="text-center">2</span>
+                    <span class="text-center">3</span>
+                    <span class="text-center">4</span>
+                  </div>
+                </button>
+                <button
+                  class="px-3 py-2 text-xs font-medium rounded-lg border border-red-500/30 text-red-400 bg-red-500/10 hover:bg-red-500/20 hover:text-red-300">Delete</button>
+              </div>
+              <div class="flex items-center gap-2">
+                <button
+                  class="flex-1 text-left p-3 rounded-xl bg-slate-800/40 border border-slate-700 hover:bg-slate-800/70">
+                  <div class="grid grid-cols-4 font-mono text-slate-200 text-sm">
+
+                    <span class="text-center">1</span>
+                    <span class="text-center">2</span>
+                    <span class="text-center">3</span>
+                    <span class="text-center">4</span>
+                  </div>
+                </button>
+                <button
+                  class="px-3 py-2 text-xs font-medium rounded-lg border border-red-500/30 text-red-400 bg-red-500/10 hover:bg-red-500/20 hover:text-red-300">Delete</button>
+              </div>
+              <div class="flex items-center gap-2">
+                <button
+                  class="flex-1 text-left p-3 rounded-xl bg-slate-800/40 border border-slate-700 hover:bg-slate-800/70">
+                  <div class="grid grid-cols-4 font-mono text-slate-200 text-sm">
+
+                    <span class="text-center">1</span>
+                    <span class="text-center">2</span>
+                    <span class="text-center">3</span>
+                    <span class="text-center">4</span>
+                  </div>
+                </button>
+                <button
+                  class="px-3 py-2 text-xs font-medium rounded-lg border border-red-500/30 text-red-400 bg-red-500/10 hover:bg-red-500/20 hover:text-red-300">Delete</button>
+              </div>
+              <div class="text-slate-500 text-sm italic">Click a row to load history.</div>
+            </div>
+          </section>
+
+          <section class="space-y-6 flex flex-col">
+            <div class="flex items-center gap-4">
+              <h2 class="text-xs font-mono text-slate-500 uppercase font-bold">04 // GRAPH</h2>
+            </div>
+            <div
+              class="flex-1 rounded-xl border border-slate-900 bg-[#0b0f19]/50 p-6 shadow-2xl bg-[radial-gradient(#1e293b_1px,transparent_1px)] bg-size-[16px_16px]">
+              <canvas id="graph" width="400" height="400"
+                class="w-full rounded-md border border-slate-900 bg-[#04060a] shadow-inner"></canvas>
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <footer class="py-10 border-t border-slate-800">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="space-y-1">
+            <div class="text-slate-200 font-bold text-sm">Cubic Equation Solver</div>
+            <div class="text-slate-500 text-xs font-mono">v1.0.0 - HTML + Tailwind CSS</div>
+          </div>
+          <div class="flex gap-8 text-xs font-mono text-slate-500">
+            <a href="#" class="hover:text-cyan-400">Documentation</a>
+            <a href="#" class="hover:text-cyan-400">Github</a>
+            <a href="#" class="hover:text-cyan-400">Contact</a>
+          </div>
+          <div class="text-slate-600 text-[10px] font-mono uppercase">© 2026 Agincourt CI</div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <!-- this is a comment -->
+  <script>
+    const canvas = document.getElementById("graph");
+    const ctx = canvas.getContext("2d");
+    console.log(canvas, ctx);
+
+    if (ctx) {
+      const w = canvas.width;
+      const h = canvas.height;
+      const scale = 40;
+
+      ctx.clearRect(0, 0, w, h);
+      ctx.save();
+      ctx.translate(w / 2, h / 2);
+
+      // grid
+      ctx.strokeStyle = "#334155";
+      ctx.lineWidth = 1;
+
+      for (let i = -w; i < w; i += scale) {
+        ctx.beginPath();
+        ctx.moveTo(i, -h);
+        ctx.lineTo(i, h);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(-w, i);
+        ctx.lineTo(w, i);
+        ctx.stroke();
+      }
+
+      // axes
+      ctx.strokeStyle = "#e2e8f0";
+      ctx.lineWidth = 2;
+
+      ctx.beginPath();
+      ctx.moveTo(-w, 0);
+      ctx.lineTo(w, 0);
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.moveTo(0, -h);
+      ctx.lineTo(0, h);
+      ctx.stroke();
+
+      ctx.restore();
+    }
+  </script>
+</body>
+
+</html>
